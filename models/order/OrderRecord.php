@@ -21,7 +21,7 @@ class OrderRecord extends ActiveRecord {
 			[['importance'], 'number'],
 			//[['company'],'string'],
 			//[['company'], 'string', 'max' => 255],
-			[['address'], 'number'],
+			//[['address'], 'number'],
 			//[['address'], 'string'],
 			//[['address'], 'string', 'max' => 255],
 			[['problem'], 'string'],
