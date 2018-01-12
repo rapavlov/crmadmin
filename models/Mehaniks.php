@@ -28,9 +28,9 @@ class Mehaniks extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'is_work', 'coment'], 'required'],
+            [['name', 'is_work', 'comment'], 'required'],
             [['is_work'], 'integer'],
-            [['name', 'coment'], 'string', 'max' => 255],
+            [['name', 'comment'], 'string', 'max' => 255],
         ];
     }
 
@@ -43,7 +43,7 @@ class Mehaniks extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'is_work' => 'Is Work',
-            'coment' => 'Coment',
+            'comment' => 'Comment',
         ];
     }
 }

@@ -3,6 +3,7 @@ use yii\grid\GridView;
 //debug($dataProvider);
 
 
+
 echo GridView::widget([
     'dataProvider' => $dataProvider,
 	'rowOptions' => function ($model, $key, $index, $grid)

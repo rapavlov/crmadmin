@@ -4,6 +4,7 @@ namespace app\controllers;
 use yii\web\Controller;
 use app\models\order\OrderRecord;
 use app\models\order\Order;
+use app\models\order\Dutymehaniks;
 use yii\filters\VerbFilter;
 use yii\data\ArrayDataProvider;
 use yii\data\ActiveDataProvider;
@@ -19,10 +20,10 @@ class OrderController extends Controller {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout','add','execute', 'index'],
+                'only' => ['logout','add','addduty','execute', 'index'],
                 'rules' => [
                     [
-                        'actions' => ['logout', 'add','execute', 'index'],
+                        'actions' => ['logout', 'add','addduty','execute', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -34,6 +35,7 @@ class OrderController extends Controller {
                     'logout' => ['post'],
 					'delete' => ['POST'],
 					'add' => ['POST', 'get'],
+					'addduty' => ['POST', 'get'],
 					'execute' => ['POST', 'get'],
 					'index' => ['POST', 'get'],
                 ],
@@ -65,11 +67,10 @@ class OrderController extends Controller {
 				}
 				return $this->render('add', compact('order'));	
 			} else {
-				//return $this->redirect(['index']);
 				return $this->render( 'notallow');
 			}
 	}
-	
+
 	private function load(OrderRecord $order, array $post)
 	{
 		return $order->load($post) 			
@@ -78,8 +79,13 @@ class OrderController extends Controller {
 	
 	public function actionIndex()
 	{
-		$dataProvider = $this->findRecordsByQuery();		
-		return $this->render( 'index', compact( 'dataProvider' ) );
+        if (($this->user_role == 'admin') or ($this->user_role == 'office') or ($this->user_role == 'mehanik'))
+        {
+            $dataProvider = $this->findRecordsByQuery();
+            return $this->render('index', compact('dataProvider'));
+        } else {
+            return $this->render( 'notallow');
+        }
 	}
 	/*public function actionQuery()
 	{
@@ -164,7 +170,7 @@ class OrderController extends Controller {
     {
 		//debug($this->user_role);
 		if (($this->user_role == 'admin') or ($this->user_role == 'mehanik'))
-			{
+        {
 				$dataProvider = new ActiveDataProvider([
 					'query' => OrderRecord::find()->where(['status' => [1,4]]),
 					//'params' => [':status' => 1], // условие публикации
@@ -174,10 +180,9 @@ class OrderController extends Controller {
 				return $this->render('execute', [
 					'dataProvider' => $dataProvider,
 				]);
-			}else{
-				//return $this->render('index');
-				return $this->redirect(['order/index']);
-			}
+        } else {
+            return $this->render( 'notallow');
+        }
     }
 	
 	 public function actionUpdate($id)
@@ -196,10 +201,9 @@ class OrderController extends Controller {
 						'model' => $model,
 						]);
 					}
-			}else{
-				//return $this->render('index');
-				return $this->redirect(['order/index']);
-			}
+		} else {
+            return $this->render( 'notallow');
+        }
     }
 	
 	protected function findModel($id)

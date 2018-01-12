@@ -43,7 +43,8 @@ AppAsset::register($this);
             ['label' => 'Заявки', 'url' => ['/order/index']],
 			['label' => 'Создать заявку на обслуживание', 'url' => ['/order/add']],
             ['label' => 'Подтвердить выполнение', 'url' => ['/order/execute']],
-            
+            ['label' => 'График дежурства', 'url' => ['/dutymehaniks/index']],
+
             Yii::$app->user->isGuest ? (
                 ['label' => 'Вход', 'url' => ['/site/login']]
             ) : (

@@ -9,6 +9,8 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 use kartik\datetime\DateTimePicker;
+
+use phpnt\chartJS\ChartJs;
 /**
  * Add Customer UI.
  *
@@ -16,6 +18,7 @@ use kartik\datetime\DateTimePicker;
  * @var CustomerRecord $customer
  * @var PhoneRecord $phone
  */
+
 $form = ActiveForm::begin([
 	'id' => 'add-order-form'
 ]);
@@ -79,4 +82,10 @@ echo $form->field($order, 'status')->dropDownList(ArrayHelper::map(Status::find(
 			
 echo Html::submitButton('Создать', ['class' => 'btn btn-primary']);
 ActiveForm::end();
+
+
+
+
+
+
 ?>
