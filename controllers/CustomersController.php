@@ -10,14 +10,14 @@ use Yii;
 class CustomersController extends Controller {
 	public function actionAdd()
 	{
-		$customer 	= new CustomerRecord();
+		/*$customer 	= new CustomerRecord();
 		$phone 		= new PhoneRecord();		
 		if ($this->load($customer, $phone, $_POST)) 
 		{			
 			$this->store($this->makeCustomer($customer, $phone));
 			return $this->redirect('customers');
 		}
-		return $this->render('add', compact('phone', 'customer'));	
+		return $this->render('add', compact('phone', 'customer'));	*/
 	}
 	private function load(CustomerRecord $customer, PhoneRecord $phone, array $post)
 	{
@@ -28,30 +28,30 @@ class CustomersController extends Controller {
 	}
 	public function actionIndex()
 	{
-		$records = $this->findRecordsByQuery();		
-		return $this->render( 'index', compact( 'records' ) );
+		/*$records = $this->findRecordsByQuery();
+		return $this->render( 'index', compact( 'records' ) );*/
 	}
 	public function actionQuery()
 	{
-		return $this->render('query');
+		/*return $this->render('query');*/
 	}
 	private function findRecordsByQuery()
 	{
-		$number = Yii::$app->request->get('phone_number');
+		/*$number = Yii::$app->request->get('phone_number');
 		$records = $this->getRecordsByPhoneNumber($number);
 		$dataProvider = $this->wrapIntoDataProvider($records);
-		return $dataProvider;
+		return $dataProvider;*/
 	}
 	private function wrapIntoDataProvider($data)
 	{
-		return new ArrayDataProvider([
+		/*return new ArrayDataProvider([
 			'allModels' => $data,
 			'pagination' => false
-		]);
+		]);*/
 	}
 	private function getRecordsByPhoneNumber($number)
 	{
-		$phoneRecord = PhoneRecord::findOne(['number' => $number]);
+		/*$phoneRecord = PhoneRecord::findOne(['number' => $number]);
 		if ( ! $phoneRecord) {
 			return [];
 		}
@@ -59,7 +59,7 @@ class CustomersController extends Controller {
 		if ( ! $customerRecord) {
 			return [];
 		}
-		return [$this->makeCustomer($customerRecord, $phoneRecord)];
+		return [$this->makeCustomer($customerRecord, $phoneRecord)];*/
 	}
 	private function store(Customer $customer)
 	{

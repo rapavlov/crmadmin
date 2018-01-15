@@ -69,19 +69,19 @@ class NewsController extends Controller
     {
 		//debug($this);
         //return $this->render('index');
-        return $this->render('article');
+        /*return $this->render('article');*/
     }
 	public function actionPole2017()
     {
-		return $this->render('pole2017');
+		/*return $this->render('pole2017');*/
     }
 	public function actionOnlinekassy()
     {        
-        return $this->render('onlinekassy');
+       /* return $this->render('onlinekassy');*/
     }
 	public function actionSnovgodom2018()
     {        
-        return $this->render('snovgodom2018');
+        /*return $this->render('snovgodom2018');*/
     }
     /**
      * Login action.
@@ -90,7 +90,7 @@ class NewsController extends Controller
      */
     public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
+        /*if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
@@ -100,7 +100,7 @@ class NewsController extends Controller
         }
         return $this->render('login', [
             'model' => $model,
-        ]);
+        ]);*/
     }
 
     /**
@@ -110,9 +110,9 @@ class NewsController extends Controller
      */
     public function actionLogout()
     {
-        Yii::$app->user->logout();
+       /* Yii::$app->user->logout();
 
-        return $this->goHome();
+        return $this->goHome();*/
     }
 
     /**
@@ -122,7 +122,7 @@ class NewsController extends Controller
      */
     public function actionContact()
     {
-        $model = new ContactForm();
+        /*$model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
 
@@ -130,7 +130,7 @@ class NewsController extends Controller
         }
         return $this->render('contact', [
             'model' => $model,
-        ]);
+        ]);*/
     }
 
     /**
@@ -140,6 +140,6 @@ class NewsController extends Controller
      */
     public function actionAbout()
     {
-        return $this->render('about');
+       /* return $this->render('about');*/
     }
 }

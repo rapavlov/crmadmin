@@ -44,7 +44,7 @@ class DutymehaniksController extends Controller
                     'view' => ['POST', 'get'],
                     'create' => ['POST', 'get'],
                     'update' => ['POST', 'get'],
-                    'delete' => ['POST', 'get'],
+                    'delete' => ['POST'],
                 ],
             ],
         ];

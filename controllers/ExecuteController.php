@@ -35,13 +35,13 @@ class ExecuteController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
+        /*$dataProvider = new ActiveDataProvider([
             'query' => OrderRecord::find(),
         ]);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
-        ]);
+        ]);*/
     }
 
     /**
@@ -51,9 +51,9 @@ class ExecuteController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
+        /*return $this->render('view', [
             'model' => $this->findModel($id),
-        ]);
+        ]);*/
     }
 
     /**
@@ -63,7 +63,7 @@ class ExecuteController extends Controller
      */
     public function actionCreate()
     {
-        $model = new OrderRecord();
+        /*$model = new OrderRecord();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -71,7 +71,7 @@ class ExecuteController extends Controller
             return $this->render('create', [
                 'model' => $model,
             ]);
-        }
+        }*/
     }
 
     /**
@@ -82,7 +82,7 @@ class ExecuteController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        /*$model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -90,7 +90,7 @@ class ExecuteController extends Controller
             return $this->render('update', [
                 'model' => $model,
             ]);
-        }
+        }*/
     }
 
     /**
@@ -101,9 +101,9 @@ class ExecuteController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        /*$this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['index']);*/
     }
 
     /**

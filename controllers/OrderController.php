@@ -4,7 +4,7 @@ namespace app\controllers;
 use yii\web\Controller;
 use app\models\order\OrderRecord;
 use app\models\order\Order;
-use app\models\order\Dutymehaniks;
+use app\models\Dutymehaniks;
 use yii\filters\VerbFilter;
 use yii\data\ArrayDataProvider;
 use yii\data\ActiveDataProvider;
@@ -20,10 +20,10 @@ class OrderController extends Controller {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout','add','addduty','execute', 'index'],
+                'only' => ['logout','add','addduty','execute', 'index',  'update'],
                 'rules' => [
                     [
-                        'actions' => ['logout', 'add','addduty','execute', 'index'],
+                        'actions' => ['logout', 'add','addduty','execute', 'index',  'update'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -35,9 +35,10 @@ class OrderController extends Controller {
                     'logout' => ['post'],
 					'delete' => ['POST'],
 					'add' => ['POST', 'get'],
-					'addduty' => ['POST', 'get'],
+					//'addduty' => ['POST', 'get'],
 					'execute' => ['POST', 'get'],
 					'index' => ['POST', 'get'],
+					'update' => ['POST', 'get'],
                 ],
             ],
         ];
@@ -190,13 +191,16 @@ class OrderController extends Controller {
 		if (($this->user_role == 'admin') or ($this->user_role == 'mehanik'))
 			{
 				$model = $this->findModel($id);
-       
+                //debug($model);
+                //die(0);
 				if ( $model->load(Yii::$app->request->post()) && $model->save())
 					{
 						//return $this->redirect(['view', 'id' => $model->id]);
 						return $this->redirect(['execute']);
 						//return $this->redirect(['view', 'id' => $model->id]);
 					} else {
+                        //debug($model);
+                       // die(0);
 						return $this->render('update', [
 						'model' => $model,
 						]);
